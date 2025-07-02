@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Folder Include="Packages\" />
+      <Folder Include="Packages\_pooling\Editor\" />
+<!--      <Folder Include="Shared\Caching\Factories\" />-->
+    </ItemGroup>
+
+<!--    <ItemGroup>-->
+<!--      <Content Include="Shared\Shared.csproj" />-->
+<!--    </ItemGroup>-->
+
+</Project>
