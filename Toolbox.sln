@@ -6,10 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_toolbox", "_toolbox\_toolb
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp", "ConsoleApp\ConsoleApp.csproj", "{5A26B908-5811-4F29-8283-9C242D01C017}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "UnityDemo\Assembly-CSharp-Editor.csproj", "{AF70F218-1CFC-2146-B59F-AA2EA2C57E8D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unity", "Unity", "{B2416D17-0BCE-4E9E-BCF4-8CDC5508B088}"
-EndProject
+
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

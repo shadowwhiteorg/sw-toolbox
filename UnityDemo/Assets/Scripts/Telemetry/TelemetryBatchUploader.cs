@@ -5,9 +5,6 @@ using UnityEngine;
 
 namespace _t.Unity.Telemetry
 {
-    /// <summary>
-    /// MonoBehaviour wrapper around BatchDispatcher, grouping telemetry by event.Type.
-    /// </summary>
     public class TelemetryBatchUploader : MonoBehaviour
     {
         [Tooltip("Number of events per type to batch before immediate upload")]

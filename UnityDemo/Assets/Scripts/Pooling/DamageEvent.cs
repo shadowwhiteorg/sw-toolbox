@@ -6,7 +6,6 @@ namespace _t.Unity.ObjectPool
         public int Damage;
         public string Source;
         public float Time;
-
         public void Clear()
         {
             Damage = 0;
