@@ -21,12 +21,12 @@ These tools are made to run in a console app for easy testing, then plug straigh
 | **Node<T>** | Linked list node holding value and pointers | `DoublyLinkedList<T>` | Internal piece used indirectly via `ObjectPool` and `Cache` |
 | **CustomDictionary<TKey, TValue>** | Hash table with separate chaining | `BatchDispatcher`, `LFUCache`, `Cache` | Groups events by type in `TelemetryBatchUploader` |
 | **MinHeap<TKey>** | Keeps ascending-priority order (for deadlines, TTLs) | `BatchDispatcher` | Schedules flush deadlines in `TelemetryBatchUploader` |
-| **Cache<K, V>** | Hybrid cache with TTL + LRU | `ObjectPool<TKey, TObject>` | Drives Unity-side pooling (`DamageEvent`, `GameObjectPool`) |
+| **Cache<K, V>** | Hybrid cache with TTL + LRU | `CacheRegistry` | Drives various caching helpers |
 | **LRUCache<K, V>** | Evicts least recently used item (no TTL) | Alternative to `Cache` | Works with `ObjectPool`, but usually replaced by `Cache` |
 | **LFUCache<K, V>** | Evicts least frequently used items with TTL support | `Program.cs` testbed | Not yet used in Unity but ready for it |
 | **BatchDispatcher<TKey, TItem>** | Groups items and dispatches when batch size or time limit hits | `TelemetryBatchUploader` | Core engine for batching logs/events in Unity |
-| **ICache<K, V>** | Interface for any cache strategy | `ObjectPool`, `CacheRegistry` | Lets you plug different caching behaviors into Unity pools |
-| **ObjectPool<TKey, TObject>** | Generic pooling system with TTL and LRU | `ObjectPoolTest`, `DamageEvent` | Reuses any type (not just `GameObject`) and auto-evicts |
+| **ICache<K, V>** | Interface for any cache strategy | `CacheRegistry` | Lets you plug different caching behaviors into Unity pools |
+| **ObjectPool<TKey, TObject>** | Generic pooling system with per-item TTL | `ObjectPoolTest`, `DamageEvent` | Tracks returned objects in a queue so multiple instances stay active |
 
 ---
 
@@ -35,5 +35,5 @@ These tools are made to run in a console app for easy testing, then plug straigh
 | Unity Feature/Script | Relies on These Structures |
 |----------------------|---------------------------|
 | `TelemetryBatchUploader` | `BatchDispatcher`, `MinHeap`, `CustomDictionary` |
-| `ObjectPoolTest`, `DamageEvent` | `ObjectPool`, `Cache`, `DoublyLinkedList`, `ICache` |
+| `ObjectPoolTest`, `DamageEvent` | `ObjectPool`, `DoublyLinkedList` |
 | `PoolTest` in console app | `DoublyLinkedList`, simple memory reuse |
