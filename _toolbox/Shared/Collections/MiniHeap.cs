@@ -67,6 +67,32 @@ namespace _t.Shared.Collections
             return minKey;
         }
 
+        public void Remove(TKey key)
+        {
+            if (!_indexMap.TryGetValue(key, out int index))
+                throw new KeyNotFoundException($"Key '{key}' not found in heap.");
+
+            int lastIndex = _heap.Count - 1;
+            if (index != lastIndex)
+            {
+                var last = _heap[lastIndex];
+                _heap[index] = last;
+                _indexMap[last.Key] = index;
+            }
+
+            _heap.RemoveAt(lastIndex);
+            _indexMap.Remove(key);
+
+            if (index < _heap.Count)
+            {
+                int parent = (index - 1) / 2;
+                if (index > 0 && _comparer.Compare(_heap[index].Priority, _heap[parent].Priority) < 0)
+                    HeapifyUp(index);
+                else
+                    HeapifyDown(index);
+            }
+        }
+
         private void HeapifyUp(int index)
         {
             while (index > 0)

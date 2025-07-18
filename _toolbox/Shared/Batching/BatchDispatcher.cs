@@ -101,7 +101,7 @@ namespace _t.Shared.Batching
             _groups.Remove(key);
             _deadlines.Remove(key);
             if (_deadlineHeap.Contains(key))
-                _deadlineHeap.ExtractMin();
+                _deadlineHeap.Remove(key);
         }
     }
 }
