@@ -16,7 +16,7 @@ namespace _t.Unity
         {
             int capacity = PoolConfig != null ? PoolConfig.Capacity : 20;
             float ttlSeconds = PoolConfig != null ? PoolConfig.TtlSeconds : 10f;
-
+            
             _testPool = new ObjectPool<int, DamageEvent>(
                 capacity: capacity,
                 ttl: TimeSpan.FromSeconds(ttlSeconds),
