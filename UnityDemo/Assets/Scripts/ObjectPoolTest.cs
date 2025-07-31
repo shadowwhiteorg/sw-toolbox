@@ -7,24 +7,23 @@ namespace _t.Unity
 {
     public class ObjectPoolTest : MonoBehaviour
     {
-        private ObjectPool<int, DamageEvent> _testPool = new ObjectPool<int, DamageEvent>(
-            capacity: 20,
-            ttl: TimeSpan.FromSeconds(10),
-            keyGenerator: () => 0, // dummy key for single-type pool
-            factory: _ => new DamageEvent(),
-            onReturn: e => e.Clear()
-            );
-        
-        void Start()
+        [SerializeField]
+        private PoolSettings PoolConfig;
+
+        private ObjectPool<int, DamageEvent> _testPool;
+
+        private void Awake()
         {
-            var eventPool = new ObjectPool<int,DamageEvent>(
-                capacity: 20,
-                ttl: TimeSpan.FromSeconds(10),
-                keyGenerator: () => 0, // dummy key for single-type pool
+            int capacity = PoolConfig != null ? PoolConfig.Capacity : 20;
+            float ttlSeconds = PoolConfig != null ? PoolConfig.TtlSeconds : 10f;
+            
+            _testPool = new ObjectPool<int, DamageEvent>(
+                capacity: capacity,
+                ttl: TimeSpan.FromSeconds(ttlSeconds),
+                keyGenerator: () => 0,
                 factory: _ => new DamageEvent(),
                 onReturn: e => e.Clear()
             );
         }
     }
 }
-
